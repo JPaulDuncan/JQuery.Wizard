@@ -8,6 +8,6 @@ Please see the [wiki](http://github.com/JPaulDuncan/JQuery.Wizard/wiki) for the 
 ---
 This plug in is public domain.
 
-__version 1.0.0__
+__version 1.0.1__
 
 Written by J Paul Duncan (jpaulduncan)
