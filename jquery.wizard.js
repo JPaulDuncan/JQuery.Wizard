@@ -85,14 +85,22 @@
                 methods._start.call(me, null);
 
                 // Callback onInit
-                if (me.options.onInit && me.options.onInit != undefined) {
-                    me.options.onInit(this)
+                if (this.options.onInit && this.options.onInit != undefined) {
+                    this.options.onInit(this)
                 }
             })
         },
-        hideAction: function (a, on) {
-            methods._buttons.filter('[data-action="' + a + '"]').css("display", on == true ? "" : "none");
-            $(methods._buttons.filter('[data-action="' + a + '"]')).parent("*").css("display", on == true ? "" : "none");
+        firstStep: null,
+        hideAction: function (actionName, on, includeParent) {
+            if (on == undefined) { on = false; }
+            if (includeParent == undefined) { includeParent = false; }
+            var action = methods._buttons.filter('[data-action="' + actionName + '"]');
+            if (action) {
+                action.css("display", on == true ? "" : "none");
+                if (includeParent) {
+                    action.parent("*").css("display", on == true ? "" : "none");
+                }
+            }
         },
         // Disable all the buttons
         disableButtons: function () {
@@ -108,7 +116,9 @@
         },
         _steps: null, // Steps
         _buttons: null, // Buttons
-
+        jumpToAction: function (actionName) {
+            $(methods._buttons.filter('[data-action="' + actionName + '"]')).trigger("click");
+        },
         // Start action
         _start: function (btn) {
             var target = methods._buttons.filter('[data-action="start"]').attr("data-target");
@@ -121,7 +131,11 @@
             if (btn) {
                 target = $(btn).attr("data-target");
             }
+
+            methods.firstStep = $(target);
+
             methods._show.call(this, target, "start", btn, this.options.onStart);
+            
         },
         
         // Next action 
