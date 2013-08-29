@@ -1,5 +1,5 @@
 /*
-       jQuery Wizard Plugin 1.0.0
+       jQuery Wizard Plugin 1.0.1
 
        Released into Public Domain by J Paul Duncan (jpaulduncan@gmail.com)
 
