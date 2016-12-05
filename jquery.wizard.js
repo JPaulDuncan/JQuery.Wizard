@@ -25,7 +25,7 @@
         },
         onStep: function () {
         },
-        disableonfinish: true,
+        disableOnfinish: true,
         fade: true,
         stepBar: {
             visible: true,
@@ -271,13 +271,13 @@
           
             if (an) {
                 if (an == "next" || an == "finish") {
-                    $(targetStep).slideLeftShow();
+                    $(targetStep).show('slide', { direction: 'left' });
                 }
                 else if (an == "prev" || an == "start") {
-                    $(targetStep).slideRightShow();
+                    $(targetStep).show('slide', { direction: 'right' });
                 }
                 else if (an == "other") {
-                    $(targetStep).slideUpShow();
+                    $(targetStep).show('slide', { direction: 'up' });
                 }
                 else {
                     targetStep.fadeIn();
